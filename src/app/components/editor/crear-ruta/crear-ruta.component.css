@@ -1,0 +1,395 @@
+.container-crear-ruta {
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Style the tab */
+.tab {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    overflow: hidden;
+    border-top: 1px solid #ccc;
+    background-color: rgba(219, 219, 219, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    width: 200px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0);
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ccc;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    color: #3F51B5;
+    border-top: 2px solid #3F51B5;
+}
+
+/* Style the tab content */
+.tabcontent {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 62px);
+    display: none;
+    background-color: rgba(255, 255, 255, 1);
+    border-top: 1px solid #ccc;
+}
+
+.cerrar {
+    position: absolute;
+    right: 30px;
+    top: 14px;
+    color: #3F51B5;
+}
+
+.form-informacion {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: auto;
+}
+
+.form-info-izq {
+    float: left;
+    width: 50%;
+    height: 100%;
+    border-right: 2px solid #ccc;
+}
+
+.form-info-der {
+    float: left;
+    width: calc(50% - 2px);
+    height: 100%;
+}
+
+.info-p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-input {
+    width: 70%;
+}
+
+.info-textarea {
+    width: 70%;
+}
+
+.datetime {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hour {
+    float: left;
+    margin-left: 25px;
+    width: 90px;
+    height: 30px;
+    outline: none;
+    font-size: 17px;
+    font-family: 'Ubuntu', sans-serif;
+    border: 1 px solid #ccc;
+    border-radius: 7px;
+    background-color: #fff;
+}
+
+.mapa-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 99%;
+    height: 97%;
+}
+
+
+.resize {
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 35%;
+    color: #000;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 5px;
+}
+
+.controles {
+    position: absolute;
+    z-index: 1;
+    left: calc(35% - 200px);
+    bottom: 7px;
+    width: 250px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controles-btn {
+    width: 80px;
+    height: 30px;
+    outline: none;
+    border-radius: 7px;
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.control-btn-selected {
+    color: #fff;
+    background-color: #3F51B5;
+}
+
+.asistido {
+    outline: none;
+}
+
+.manual {
+    margin-left: 10px;
+}
+
+.map-points {
+    position: absolute;
+    width: calc(30% - 5px);
+    height: 100%;
+    right: 0;
+    top: 0;
+    background-color: #fff;
+}
+
+.map-points-header {
+    width: 100%;
+    height: 50px;
+    background-color: #FAFAFA;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-points-body {
+    width: 100%;
+	height: -webkit-calc(100% - 92px);
+	height: -moz-calc(100% - 92px);
+    height: calc(100% - 92px);
+    background-color: #F5F5F5;
+    overflow: auto;
+}
+
+.map-points-footer {
+    width: 100%;
+    height: 40px;
+    background-color: #FAFAFA;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.point {
+    width: 100%;
+    height: 45px;
+    background-color: #E0E0E0;
+    border-bottom: 1px solid #000;
+}
+
+.point-label {
+    width: calc(100% - 5px);
+    height: 25px;
+    line-height: 25px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    color: #000;
+    padding-left: 5px;
+    outline: none;
+}
+
+.point-coordinates {
+    width: calc(100% - 5px);
+    height: 20px;
+    line-height: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
+    padding-left: 5px;
+}
+
+.container-ruta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 90%;
+    height: 95%;
+}
+
+.ruta-info {
+    float: left;
+    width: calc(50% - 1px);
+    height: 100%;
+    border-right: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.ruta-coor {
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+}
+
+.resumen {
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    font-family: 'Ubuntu', sans-serif;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.resumen-icon {
+    float: left;
+    width: 50px;
+    height: calc(100% - 1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resumen-content {
+    float: left;
+    width: calc(100% - 50px);
+    height: calc(100% - 1px);
+}
+
+.resumen-content p {
+    margin: 0;
+}
+
+.resumen-label {
+    height: 20px;
+    line-height: 20px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.resumen-desc {
+    padding-left: 10px;
+    width: calc(100% - 10px);
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    overflow: auto;
+}
+
+.titulo {
+    width: calc(100% - 1px);
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+.resumen-points-body {
+    width: 95%;
+    margin: auto auto;
+	height: -webkit-calc(100% - 111px);
+	height: -moz-calc(100% - 111px);
+    height: calc(100% - 111px);
+    background-color: #fff;
+    overflow: auto;
+}
+
+.resumen-point {
+    width: 100%;
+    height: 45px;
+    background-color: #fff;
+    border-bottom: 1px solid #000;
+}
+
+.resumen-point-label {
+    width: calc(100% - 5px);
+    height: 25px;
+    line-height: 25px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    color: #000;
+    padding-left: 5px;
+    outline: none;
+}
+
+.resumen-point-coordinates {
+    width: calc(100% - 5px);
+    height: 20px;
+    line-height: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
+    padding-left: 5px;
+}
+
+.resumen-points-footer {
+    width: 100%;
+    height: 60px;
+    background-color: #FAFAFA;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnSubmit {
+    width: 90px;
+    height: 40px;
+    background-color: #3F51B5;
+    color: #fff;
+    border-radius: 5px;
+    outline: none;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 13px;
+}
+
+
+

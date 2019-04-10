@@ -1,0 +1,45 @@
+<div class="container-editor">
+  <div class="editor-header">
+    <!--
+    <div class="editor-atras">
+      <i class="fas fa-angle-left fa-2x editor-angle"></i>
+    </div>
+    <div class="editor-adelante">
+      <i class="fas fa-angle-right fa-2x editor-angle"></i>
+    </div>
+    
+    <div class="editor-container-opciones">
+      <div id="crear" class="editor-opciones editor-crear" (click)="selected('crear')" [routerLink]="['crear']">
+        Nueva Ruta
+      </div>
+      <div id="editar" class="editor-opciones editor-editar" (click)="selected('editar')" [routerLink]="['editar']">
+        Editar Ruta
+      </div>
+      <div id="eliminar" class="editor-opciones editor-eliminar" (click)="selected('eliminar')" [routerLink]="['eliminar']">
+        Eliminar Ruta
+      </div>
+    </div>
+    -->
+    <mat-toolbar class="toolbar">
+        <mat-toolbar-row class="row-header">
+          <span>Editor de rutas</span>
+          <span class="example-spacer"></span>
+          <!--
+          <mat-icon class="example-icon">add_circle</mat-icon>
+          <i class="fas fa-eye example-icon fa-lg" [routerLink]="['inicio']"></i>
+          -->
+          <i class="fas fa-list-ul example-icon fa-lg" [routerLink]="['inicio']"></i>
+          <i class="fas fa-plus-circle example-icon fa-lg" [routerLink]="['crear']"></i>
+        </mat-toolbar-row>
+      </mat-toolbar>
+  </div>
+  <div class="editor-body">
+    <div class="editor-text1">
+      Para comenzar selecciona una acción. Si necesitas más información visita www.flycar.com
+    </div>
+    <div class="editor-router-outlet">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

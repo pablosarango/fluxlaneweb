@@ -1,0 +1,178 @@
+<div class="container-crear-ruta">
+  <div class="tab">
+    <button class="tablinks" (click)="openTab($event, 'informacion')" id="defaultOpen">Información</button>
+    <button class="tablinks" (click)="openTab($event, 'mapa')">Mapa</button>
+    <button class="tablinks" (click)="openTab($event, 'resumen')">Resumen</button>
+    <i class="fas fa-times-circle cerrar fa-2x" (click)="goParent()"></i>
+  </div>
+
+  <div id="informacion" class="tabcontent">
+    <form [formGroup]="infoForm">
+      <div class="form-informacion">
+        <div class="form-info-izq">
+          <p class="info-p">
+            <mat-form-field appearance="outline" class="info-input">
+              <mat-label>Nombre de la ruta</mat-label>
+              <input formControlName="nombre" type="text" matInput placeholder="Ruta A" required>
+              <mat-error *ngIf="infoForm.get('nombre').invalid">Mínimo 5 caracteres</mat-error>
+            </mat-form-field>
+          </p>
+          <p class="info-p">
+            <mat-form-field appearance="outline" class="info-textarea">
+              <mat-label>Descripción</mat-label>
+              <textarea matInput formControlName="descripcion" rows="3" cols="50" matInput placeholder="Hola soy la Ruata A :)"
+                required></textarea>
+              <mat-error *ngIf="infoForm.get('descripcion').invalid">Mínimo 10 caracteres</mat-error>
+            </mat-form-field>
+          </p>
+          <div class="datetime">
+            <mat-form-field appearance="outline" style="float: left; width: 40%;">
+              <mat-label>Fecha</mat-label>
+              <input formControlName="fecha" matInput [min]="minDate" [matDatepicker]="dp3" placeholder="DD/MM/YYYY">
+              <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+              <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </mat-form-field>
+
+            <input formControlName="hora" class="hour" type="time" min="00:00" max="23:59" value="08:00" required />
+          </div>
+        </div>
+        <div class="form-info-der">
+          <p class="info-p">
+            <mat-form-field appearance="outline" class="info-input">
+              <mat-label>Clima</mat-label>
+              <input formControlName="clima" type="text" matInput placeholder="Ej: Lluvioso" required>
+              <mat-error *ngIf="infoForm.get('clima').invalid">Mínimo 5 caracteres</mat-error>
+            </mat-form-field>
+          </p>
+          <p class="info-p">
+            <mat-form-field appearance="outline" class="info-input">
+              <mat-label>Intervalo de captura</mat-label>
+              <input formControlName="intervalo" type="number" min="1" max="10" matInput placeholder="1 => 1 segundo"
+                required>
+              <mat-error *ngIf="infoForm.get('intervalo').invalid">Valores entre 1-10</mat-error>
+            </mat-form-field>
+          </p>
+          <p class="info-p">
+            <mat-form-field appearance="outline" class="info-input">
+              <mat-label>Conductor</mat-label>
+              <input formControlName="conductor" type="text" placeholder="Selecciona un conductor" aria-label="Number"
+                matInput [matAutocomplete]="auto" required>
+              <mat-error *ngIf="infoForm.get('conductor').invalid">Mínimo 5 caracteres</mat-error>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async, let i = index" [value]="option + ' | ' + i">
+                  {{option}} | {{i}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </p>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+  <div id="mapa" class="tabcontent">
+    <div class="mapa-container">
+      <div id='map' class="mapa" style='position:absolute !important; top:0; bottom:0; width:70%;'></div>
+      <i class="fas fa-expand-arrows-alt fa-2x resize" (click)="resizeMap()"></i>
+      <div class="controles">
+        <a id="asistido" (click)="selected('asistido')" class="controles-btn asistido">Asistido</a>
+        <a id="manual" (click)="selected('manual')" class="controles-btn manual">Manual</a>
+      </div>
+      <div class="map-points">
+        <div class="map-points-header">
+          PUNTOS (24 max)
+        </div>
+        <div id="map-points-body" class="map-points-body">
+          <div *ngFor="let coor of finalData; let i = index" class="point">
+            <div id="{{ 'nombre' + i}}" contenteditable="true" class="point-label">{{coor.name}}</div>
+            <div class="point-coordinates">{{coor.coordinates}}</div>
+          </div>
+        </div>
+        <div class="map-points-footer">
+          <button mat-stroked-button color="primary" (click)="guardar()" [disabled]="disabledBtn">Guardar</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="resumen" class="tabcontent">
+    <!--<h3>{{ infoForm.value.nombre}}</h3>-->
+    <div class="container-ruta">
+      <div class="ruta-info">
+        <h3 class="titulo">Información de Ruta</h3>
+        <div class="resumen">
+          <i class="fas fa-route fa-lg resumen-icon"></i>
+          <div class="resumen-content">
+            <p class="resumen-label">Nombre:</p>
+            <p class="resumen-desc">{{infoForm.value.nombre}}</p>
+          </div>
+        </div>
+
+        <div class="resumen">
+          <i class="fas fa-align-justify fa-lg resumen-icon"></i>
+          <div class="resumen-content">
+            <p class="resumen-label">Descripción:</p>
+            <p class="resumen-desc">{{infoForm.value.descripcion}}</p>
+          </div>
+        </div>
+
+        <div class="resumen">
+          <i class="fas fa-calendar-alt fa-lg resumen-icon"></i>
+          <div class="resumen-content">
+            <p class="resumen-label">Fecha:</p>
+            <p class="resumen-desc">{{infoForm.get('fecha').value.toLocaleDateString()}}</p>
+          </div>
+        </div>
+
+        <div class="resumen">
+          <i class="fas fa-clock fa-lg resumen-icon"></i>
+          <div class="resumen-content">
+            <p class="resumen-label">Hora:</p>
+            <p class="resumen-desc">{{infoForm.value.hora}}</p>
+          </div>
+        </div>
+
+        <div class="resumen">
+          <i class="fas fa-sun fa-lg resumen-icon"></i>
+          <div class="resumen-content">
+            <p class="resumen-label">Clima:</p>
+            <p class="resumen-desc">{{infoForm.value.clima}}</p>
+          </div>
+        </div>
+
+        <div class="resumen">
+          <i class="fas fa-info fa-lg resumen-icon"></i>
+          <div class="resumen-content">
+            <p class="resumen-label">Intervalo:</p>
+            <p class="resumen-desc">{{infoForm.value.intervalo}}</p>
+          </div>
+        </div>
+        <div class="resumen">
+          <i class="fas fa-user-alt fa-lg resumen-icon"></i>
+          <div class="resumen-content">
+            <p class="resumen-label">Conductor:</p>
+            <p class="resumen-desc">{{infoForm.value.conductor}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="ruta-coor">
+        <h3 class="titulo">Referencias de Ruta</h3>
+        <div class="resumen-points-body">
+          <div *ngFor="let coor of finalData; let i = index" class="resumen-point">
+            <div class="resumen-point-label">{{coor.name}}</div>
+            <div class="resumen-point-coordinates">{{coor.coordinates}}</div>
+          </div>
+        </div>
+        <div class="resumen-points-footer">
+          <!--
+          <button mat-flat-button color="primary" (click)="submit()" [disabled]="disabledBtn">Guardar</button>
+          -->
+          <button class="btnSubmit" (click)="submit()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

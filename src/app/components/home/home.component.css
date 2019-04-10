@@ -1,0 +1,164 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(250, 250, 250, 1);
+}
+
+.menu {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: rgba(232, 235, 238, 1);
+}
+
+.component {
+    position: relative;
+    margin-top: -100vh;
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    height: 100vh;
+    background-color: rgba(250, 250, 250, 1);
+}
+
+.loader {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url("../../../assets/img/loaders/loader3.gif");
+    background-repeat: no-repeat;
+    background-size: 150px 150px;
+    background-position: center;
+}
+
+/*
+    Clase para un div que sirve de ejemplo de la distribución de un componente
+.example {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 95%;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+*/
+
+.usuario {
+    position: relative;
+    width: 100%;
+    height: 150px;
+}
+
+.foto {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.nombre {
+    position: absolute;
+    bottom: 0;
+    left: calc((100% - 130px)/2);
+    width: 130px;
+    height: 30px;
+    margin: auto auto;
+    text-align: center;
+    border-radius: 13px;
+    /*background-color: rgba(46, 64, 255, 1);*/
+    /*background-color: rgba(0, 173, 225, 1);*/
+    background-color: #3F51B5;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.items {
+    position: relative;
+    top: 20px;
+    width: 100%;
+    height: 450px;
+}
+
+.item-group {
+    position: relative;
+    margin-top: 15px;
+    float: left;
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.item-group a {
+    text-decoration: none;
+}
+
+.icon {
+    position: absolute;
+    left: 10px;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.item {
+    position: absolute;
+    left: calc(5px + 20%);
+    width: 160px;
+    height: 100%;
+    line-height: 50px;
+    padding-left: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+
+.item-non-active {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.item-active {
+    color: #000;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    /*border-left: 5px solid rgba(46, 64, 255, 1);*/
+    /*border-left: 5px solid rgba(0, 173, 255, 1);*/
+    border-left: 5px solid #3F51B5;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.icon-active {
+    /*color: rgba(46, 64, 255, 1);*/
+    /*color: rgba(0, 173, 255, 1);*/
+    color: #3F51B5;
+}
+
+.icon-non-active {
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.item-group:focus {
+    outline: none;
+}

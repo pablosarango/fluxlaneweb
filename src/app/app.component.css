@@ -1,0 +1,68 @@
+.left {
+    float: left;
+    width: 55%;
+    height: 100vh;
+    background-color: rgba(220, 221, 216, 1);
+}
+
+.right {
+    float: left;
+    width: 45%;
+    height: 100vh;
+    background-color: rgba(235, 237, 231, 1);
+}
+
+/*
+.container {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .4)),  url("../assets/img/recursos/bg5.jpg");
+    background-size: cover;
+}
+
+.cloud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../assets/img/recursos/clouds.png");
+    animation: animate 260s linear infinite;
+}
+
+@keyframes animate{
+    0%
+    {
+        background-position: 0px;
+    }
+    100%
+    {
+        background-position: 2313px;
+    }
+}
+
+.form-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.49);
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    width: 300px;
+    height: auto;
+}
+
+.caja {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+*/

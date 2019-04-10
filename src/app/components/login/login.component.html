@@ -1,0 +1,59 @@
+<div class="background">
+  <div class="form-container">
+    <div class="login-left">
+      <div class="cloud"></div>
+      <div class="container-logo">
+        <div class="nombre">
+          FlyCar
+        </div>
+        <hr class="separador">
+        <div class="text1">
+          Open
+        </div>
+        <div class="text2">
+          Your Mind
+        </div>
+      </div>
+      <div class="contacto">
+        pgsarangou@flycar.com
+      </div>
+    </div>
+    <div class="login-right">
+      <div class="car x1"></div>
+      <div class="car1 x2"></div>
+      <!--
+        <div class="car2 x3"></div>
+        <div class="car x4"></div>
+        <div class="car1 x5"></div>
+        -->
+      <div class="container-form">
+        <div class="text3">
+          Por favor introduce tu correo y <br> contraseña para acceder.
+        </div>
+        <form>
+          <mat-form-field class="input-email" appearance="outline">
+            <mat-label>Identificación</mat-label>
+            <input matInput placeholder="Correo" [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-icon matSuffix color="primary">account_box</mat-icon>
+          </mat-form-field>
+          <mat-form-field class="input-password" appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'" [formControl]="password"
+              required>
+            <mat-error *ngIf="password.invalid">{{getErrorMessagePassword()}}</mat-error>
+            <mat-icon color="primary" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+          <button type="submit" class="submit" (click)="onSubmit()">Acceder</button>
+          <!--<input id="email" type="text" class="email" placeholder="Correo" required>
+            <input id="password" type="password" class="password" placeholder="Contraseña" required>
+            <button class="submit" (click)="submit($event)">Acceder</button>
+            -->
+        </form>
+      </div>
+      <div class="policy">
+        Política de privacidad
+      </div>
+    </div>
+  </div>
+</div>

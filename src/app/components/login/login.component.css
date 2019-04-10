@@ -1,0 +1,315 @@
+.background {
+    width: 100%;
+    height: 100vh;
+    background: url("../../../assets/img/recursos/bg5.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.form-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: 70%;
+    height: 80vh;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.login-left {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 80vh;
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),  url("../../../assets/img/recursos/bg5.jpg");
+    background-size: cover;
+    color: #fff;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.login-right {
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 80vh;
+}
+
+.cloud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../../../assets/img/recursos/clouds.png");
+    animation: animate 200s linear infinite;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+@keyframes animate{
+    0%
+    {
+        background-position: 0px;
+    }
+    100%
+    {
+        background-position: 2313px;
+    }
+}
+
+.car {
+    width: 100%;
+    height: 100%;
+    background: url("../../../assets/img/icons/car-color.svg");
+    background-size: 100% 100%;
+}
+
+.car1 {
+    width: 100%;
+    height: 100%;
+    background: url("../../../assets/img/icons/car1.svg");
+    background-size: 100% 100%;
+}
+
+.car2 {
+    width: 100%;
+    height: 100%;
+    background: url("../../../assets/img/icons/car2.svg");
+    background-size: 100% 100%;
+}
+
+.x1 {
+    position: absolute;
+    top: 12%;
+    width: 100px;
+    height: 80px;
+    animation: enLinea 20s linear infinite, float 3s ease-in-out infinite;
+    z-index: -1;
+}
+
+.x2 {
+    position: absolute;
+    left: 200px;
+    bottom: -350px;
+    width: 200px;
+    height: 150px;
+    animation: diagonal 30s infinite;
+    z-index: -1;
+}
+
+.x3 {
+    position: absolute;
+    top: -10%;
+    width: 250px;
+    height: 200px;
+    animation: enLinea 10s linear infinite;
+    transform: scale(0.15) rotate(10deg);
+    z-index: -1;
+}
+
+.x4 {
+    position: absolute;
+    top: 44%;
+    width: 40px;
+    height: 20px;
+    animation: enLinea 15s linear infinite, float 4s ease-in-out infinite;
+    z-index: -1;
+}
+
+.x5 {
+    position: absolute;
+    top: 67%;
+    width: 60px;
+    height: 30px;
+    animation: enLinea 19s linear infinite, float 6s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes enLinea{
+    0%
+    {
+        margin-left: -500px;
+    }
+    100%
+    {
+        margin-left: 600px;
+    }
+}
+
+@keyframes diagonal{
+    0%
+    { 
+        transform: translatex(-200px) translatey(-200px);
+    }
+    100%     
+    { 
+        transform: translatex(500px) translatey(-500px);
+    }
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-25px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+.container-logo {
+    position: absolute;
+    right: 55px;
+    top: 15%;
+    width: 65%;
+    height: 350px;
+}
+
+.nombre {
+    position: absolute;
+    top: 150px;
+    right: 15px;
+    font-family: 'Charmonman', cursive;
+    font-size: 35pt;
+}
+
+.separador {
+    position: absolute;
+    top: 200px;
+    right: 5px;
+    width: 50%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 1);
+    border:none;
+}
+
+.text1 {
+    position: absolute;
+    right: 10px;
+    bottom: 15%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30pt;
+}
+
+.text2 {
+    position: absolute;
+    right: 10px;
+    bottom: 3%;
+    font-family: 'Lato', sans-serif;
+    font-size: 30pt;
+}
+
+.contacto {
+    position: absolute;
+    right: 65px;
+    bottom: 3%;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Roboto', sans-serif;
+    font-size: 10pt;
+}
+
+.container-form {
+    position: absolute;
+    top: 30%;
+    left: 65px;
+    width: 70%;
+    height: 300px;
+}
+
+.text3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10pt;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.email {
+    position: absolute;
+    top: 70px;
+    width: 180px;
+    height: 35px;
+    border-radius: 20px;
+    border: 2px solid rgb(139, 139, 139);
+    background: rgba(255, 255, 255, 1) url("../../../assets/img/icons/email.png");
+    background-repeat:no-repeat;
+    background-position: 200px;
+    background-size: 20px 20px;
+    padding-left: 20px;
+    padding-right: 30px;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11pt;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.email:focus {
+    border: 2px solid rgba(28, 75, 173, 1);
+}
+
+.password {
+    position: absolute;
+    top: 130px;
+    width: 180px;
+    height: 35px;
+    border-radius: 20px;
+    border: 2px solid rgb(139, 139, 139);
+    background: rgba(255, 255, 255, 1) url("../../../assets/img/icons/lock.png");
+    background-repeat:no-repeat;
+    background-position: 200px;
+    background-size: 20px 20px;
+    padding-left: 20px;
+    padding-right: 30px;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11pt;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.password:focus {
+    border: 2px solid rgba(28, 75, 173, 1);
+}
+
+.submit {
+    position: absolute;
+    top: 240px;
+    left: 0;
+    width: 150px;
+    height: 40px;
+    text-align: left;
+    padding-left: 20px;
+    color: #fff;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11pt;
+    background: rgba(28, 75, 173, 1) url("../../../assets/img/icons/row-right.png");
+    background-repeat:no-repeat;
+    background-position: 120px;
+    background-size: 25px 25px;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    outline: none;
+}
+
+.policy {
+    position: absolute;
+    left: 65px;
+    bottom: 3%;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: 'Roboto', sans-serif;
+    font-size: 10pt;
+}
+
+.input-email {
+    position: relative;
+    top: 15px;
+}
+
+.input-password {
+    position: relative;
+    top: 20px;
+}
+

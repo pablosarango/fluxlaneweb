@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '~@angular/material/prebuilt-themes/purple-green.css';*/
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Charmonman');
+@import url('https://fonts.googleapis.com/css?family=Lato:bold');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+@import url('@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css');
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.style-succes {
+    color: #fff;
+    background-color: #4CAF50;
+}
+
+.style-succes .mat-simple-snackbar-action  {
+    color: #fff;
+}
+
+.style-error {
+    color: #fff;
+    background-color: #F44336;
+}
+
+.style-error .mat-simple-snackbar-action {
+    color: #fff;
+}
+
+.no-margin {
+    margin: 0;
+}

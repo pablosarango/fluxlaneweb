@@ -1,0 +1,22 @@
+<div class="container-inicio">
+  <div class="search-header">
+    <form [formGroup]="searchForm">
+      <mat-form-field appearance="legacy" class="search-input">
+        <mat-label>Criterio de búsqueda</mat-label>
+        <input formControlName="valor" type="text" matInput placeholder="Ruta A" required>
+        <mat-error *ngIf="searchForm.get('valor').invalid">Mínimo 4 caracteres</mat-error>
+      </mat-form-field>
+      <!--
+      <button mat-stroked-button color="primary" class="search-button" [disabled]="searchForm.get('valor').invalid">
+        <i class="fas fa-search"></i>
+      </button>
+      -->
+      <button mat-icon-button color="primary" class="search-button" [disabled]="searchForm.get('valor').invalid">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+  </div>
+  <div class="body-inicio">
+
+  </div>
+</div>
