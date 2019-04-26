@@ -1,6 +1,6 @@
-<h2 mat-dialog-title style="font-family: 'Ubuntu', sans-serif;">Guardar {{data.ruta.nombre}}</h2>
+<h2 mat-dialog-title style="font-family: 'Ubuntu', sans-serif;">{{action}} {{data.ruta.nombre}}</h2>
 <mat-dialog-content class="dialog">
-    Para confirmar haz click en GUARDAR
+    Para confirmar haz click en <i><strong>{{action}}</strong></i>
     <mat-spinner *ngIf="isVisible" class="dialog-spinner"></mat-spinner>
     <div class="mensaje">
         <div *ngIf="isCorrect" class="success">
@@ -14,7 +14,8 @@
     </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button (click)="close()" [disabled]="isDisabled" *ngIf="isHidden">Cancelar</button>
-    <button mat-button (click)="submit()" [disabled]="isDisabled" *ngIf="isHidden">Guardar</button>
-    <button mat-button mat-dialog-close *ngIf="!isHidden">Cerrar</button>
+    <button mat-button (click)="close(false)" [disabled]="isDisabled" *ngIf="isHidden">Cancelar</button>
+    <button mat-button (click)="submit()" [disabled]="isDisabled" *ngIf="isHidden && !data.update">Guardar</button>
+    <button mat-button (click)="update()" [disabled]="isDisabled" *ngIf="isHidden && data.update">Actualizar</button>
+    <button mat-button (click)="close(true)" *ngIf="!isHidden">Cerrar</button>
 </mat-dialog-actions>

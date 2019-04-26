@@ -1,0 +1,101 @@
+<div class="container-ayuda">
+  <div class="ayuda-header">
+    <mat-toolbar class="toolbar-ayuda">
+      <mat-toolbar-row class="row-header">
+        <span>Ayuda rápida</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <div class="ayuda-body">
+    <div class="contenido">
+      <div class="descripcion">
+        En esta sección podrás <br />
+        encontrar una guía rápida <br />
+        de las operación sobre rutas.
+      </div>
+
+      <div class="fila">
+        <div
+          class="cell"
+          matTooltip="Cómo crear una ruta"
+          matTooltipPosition="above"
+          matTooltipShowDelay="500"
+          (click)="openDialogCrearRuta()"
+        >
+          <i class="fas fa-route fa-3x icon"></i>
+          <a class="label">Crear ruta</a>
+        </div>
+
+        <div class="separador"></div>
+
+        <div
+          class="cell"
+          matTooltip="Cómo editar ó eliminar una ruta"
+          matTooltipPosition="above"
+          matTooltipShowDelay="500"
+          (click)="openDialogOpcionesRuta()"
+        >
+          <i class="fas fa-edit fa-3x icon"></i>
+          <a class="label">Opciones de ruta</a>
+        </div>
+
+        <div class="separador"></div>
+
+        <div
+          class="cell"
+          matTooltip="Aprobar o rechazar los datos capturados de una ruta"
+          matTooltipPosition="above"
+          matTooltipShowDelay="500"
+          (click)="openDialogGestionRuta()"
+        >
+          <i class="fas fa-check-square fa-3x icon"></i>
+          <a class="label">Gestión de ruta</a>
+        </div>
+      </div>
+
+      <div class="fila fila-color">
+        <div class="descripcion">
+          A continuación, <br />
+          puedes encontrar los <br />
+          manuales en PDF.
+        </div>
+
+        <div
+          class="cell"
+          matTooltip="Manual del sistema web en pdf"
+          matTooltipPosition="above"
+          matTooltipShowDelay="500"
+        >
+          <i class="fas fa-file-pdf fa-3x icon"></i>
+          <a class="label">Manual Web</a>
+        </div>
+
+        <div class="separador"></div>
+
+        <div
+          class="cell"
+          matTooltip="Manual del aplicativo móvil en pdf"
+          matTooltipPosition="above"
+          matTooltipShowDelay="500"
+        >
+          <i class="fas fa-file-pdf fa-3x icon"></i>
+          <a class="label">Manual Aplicación</a>
+        </div>
+      </div>
+
+      <div class="autor">
+        Desarrollado por Pablo Sarango. <br />
+        Proyecto final de carrera. <br />
+        pablosarangouchuari@gmail.com
+      </div>
+
+      <div class="contact-icon">
+          <a href="mailto:pablosarangouchuari@gmail.com?Subject=FluxLane%20Web" target="_blank"><i class="fas fa-envelope fa-lg"></i></a>
+          <div class="separador-icon"></div>
+          <a href="https://www.facebook.com/pablo.sarango.169" target="_blank"><i class="fab fa-facebook-f fa-lg"></i></a>
+          <div class="separador-icon"></div>
+          <a href="https://twitter.com/pgsarangou" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+      </div>
+    </div>
+  </div>
+</div>

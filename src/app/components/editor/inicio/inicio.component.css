@@ -8,24 +8,103 @@
 
 .search-header {
     width: 90%;
-    height: 73px;
+    height: 50px;
     margin: auto auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: lightcoral;
 }
 
 .body-inicio {
     width: 100%;
-    height: calc(100% - 73px);
-    background-color: lightgreen;
+    height: calc(100% - 50px);
+    background-color: #fff;
 }
 
 .search-input {
     width: 350px;
+    background: transparent;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom: 1px solid #3F51B5 !important;
+    outline: none;
+    height: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+
+.limit-input {
+    margin-left: 10px;
+    width: 80px;
+    background: transparent;
+    border-top: transparent !important;
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-bottom: 1px solid #3F51B5 !important;
+    outline: none;
+    height: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
 }
 
 .search-button {
     margin-left: 20px;
+    outline: none;
+    color: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border: transparent !important;
+    border-radius: 20px;
+}
+
+.active {
+    color: #3F51B5;
+    border: 1px solid #3F51B5 !important;
+}
+
+.tabla {
+    width: 95%;
+    height: calc(100% - 140px);
+    margin: auto auto;
+    overflow: auto;
+}
+
+.tabla table {
+    width: 100%;
+    table-layout: fixed;
+}  
+
+.row-descripcion {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.filter {
+    min-height: 64px;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 300px;
+    margin-left: 2.5%;
+}
+
+.tabla td, th {
+    width: 25%;
+    font-family: 'Ubuntu', sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.paginator {
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    bottom: 10px;
+    left: 2.5%;
+    width: 95%;
+    -webkit-box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+    -moz-box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
 }

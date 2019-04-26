@@ -14,7 +14,7 @@ export class AuthenticationService {
     };
 
     login(email: string, password: string) {
-        return this.http.patch<any>(`${environment.API_URL}/usuario/login`, { email, password }, this.httpOptions)
+        return this.http.patch<any>(`${environment.API_URL}/usuario/login/admin`, { email, password }, this.httpOptions)
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
@@ -29,5 +29,6 @@ export class AuthenticationService {
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('lastUrl');
     }
 }

@@ -10,7 +10,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 /**
  * Animaciones de Angular Animation
  */
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 
@@ -28,8 +27,25 @@ import { HomeComponent } from './components/home/home.component';
 import { RutasComponent } from './components/rutas/rutas.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
-import { CrearRutaComponent, DialogGuardarRutaComponent } from './components/editor/crear-ruta/crear-ruta.component';
-import { InicioComponent } from './components/editor/inicio/inicio.component';
+import { CrearRutaComponent, DialogGuardarRutaComponent} from './components/editor/crear-ruta/crear-ruta.component';
+import { InicioComponent, DialogVerRutaComponent, DialogEliminarRutaComponent } from './components/editor/inicio/inicio.component';
+import { DetallesComponent, DialogGuardarRutaDetalleComponent } from './components/rutas/detalles/detalles.component';
+import { DashboardComponent } from './components/rutas/dashboard/dashboard.component';
+import {
+  UserDashboardComponent,
+  DialogViewUserComponent,
+  DialogChangePasswordComponent,
+  DialogChangeStateComponent,
+  DialogDeleteUserComponent
+} from './components/usuarios/user-dashboard/user-dashboard.component';
+import {
+  CrearUsuarioComponent,
+  DialogCreateUserComponent
+} from './components/usuarios/crear-usuario/crear-usuario.component';
+import {
+  AyudaComponent,
+  DialogAyudaComponent
+} from './components/ayuda/ayuda.component';
 
 // _helpers
 import { ErrorInterceptor } from './_helpers';
@@ -60,18 +76,43 @@ export const MY_NATIVE_FORMATS = {
     CrearRutaComponent,
     SafeHtmlPipe,
     DialogGuardarRutaComponent,
-    InicioComponent
+    InicioComponent,
+    DialogVerRutaComponent,
+    DialogEliminarRutaComponent,
+    DetallesComponent,
+    DialogGuardarRutaDetalleComponent,
+    DashboardComponent,
+    UserDashboardComponent,
+    DialogViewUserComponent,
+    DialogChangePasswordComponent,
+    CrearUsuarioComponent,
+    DialogCreateUserComponent,
+    DialogChangeStateComponent,
+    DialogDeleteUserComponent,
+    DialogAyudaComponent,
+    AyudaComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatDatepickerModule
   ],
-  entryComponents: [CrearRutaComponent, DialogGuardarRutaComponent],
+  entryComponents: [
+    CrearRutaComponent,
+    DialogGuardarRutaComponent,
+    DialogVerRutaComponent,
+    DialogEliminarRutaComponent,
+    DialogGuardarRutaDetalleComponent,
+    DialogViewUserComponent,
+    DialogChangePasswordComponent,
+    DialogCreateUserComponent,
+    DialogChangeStateComponent,
+    DialogDeleteUserComponent,
+    DialogAyudaComponent
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

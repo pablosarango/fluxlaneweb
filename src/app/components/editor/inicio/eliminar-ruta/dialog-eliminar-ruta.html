@@ -1,0 +1,20 @@
+<h2 mat-dialog-title style="font-family: 'Ubuntu', sans-serif;">Eliminar Ruta</h2>
+<mat-dialog-content class="dialog">
+    Para confirmar haz click en BORRAR. <br> Ésta acción no podrá deshacerse.
+    <mat-spinner *ngIf="isVisible" class="dialog-spinner"></mat-spinner>
+    <div class="mensaje">
+        <div *ngIf="isCorrect" class="success">
+            <p class="mensaje-label">Correcto:</p>
+            {{message}}
+        </div>
+        <div *ngIf="isIncorrect" class="error">
+            <p class="mensaje-label">Error: </p>
+            {{message}}
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="close()" [disabled]="isDisabled" *ngIf="isHidden">Cancelar</button>
+    <button mat-button (click)="delete()" [disabled]="isDisabled" *ngIf="isHidden">Borrar</button>
+    <button mat-button mat-dialog-close *ngIf="!isHidden">Cerrar</button>
+</mat-dialog-actions>

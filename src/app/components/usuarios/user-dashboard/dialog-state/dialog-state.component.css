@@ -1,0 +1,41 @@
+.dialog {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.dialog-spinner {
+    margin: 10px auto;
+    width: 100px;
+    height: 100px;
+}
+
+.mensaje {
+    margin: 5px;
+    width: 100%;
+}
+
+.success {
+    color: #4CAF50;
+}
+
+.error {
+    color: #F44336;
+}
+
+.mensaje-label {
+    margin: 0;
+}
+
+.body-form {
+    margin: auto auto;
+    width: 80%;
+}
+
+.info-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.state-input {
+    width: 70%;
+}

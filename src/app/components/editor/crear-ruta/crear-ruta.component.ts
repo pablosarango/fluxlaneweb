@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import {Observable} from 'rxjs';
 import { map, startWith, first } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,6 +13,10 @@ import * as MapboxDraw from '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw';
 
 export interface DialogData {
   ruta: Ruta;
+  update: boolean;
+  id: string;
+  newUserId: string;
+  oldUserId: string;
 }
 
 @Component({
@@ -25,9 +29,12 @@ export class CrearRutaComponent implements OnInit {
   lastItemID = 'asistido';
   disabledBtn = true;
   bandera = true;
+  updateRuta = false;
   coords = [];
   infoForm: FormGroup;
   finalData = [];
+  rutaId;
+  oldUserId: string;
 
   minDate = new Date();
   dateObj = new Date();
@@ -50,7 +57,6 @@ export class CrearRutaComponent implements OnInit {
     private route: ActivatedRoute) {
     this.minDate = new Date(this.dateObj.getFullYear(), this.dateObj.getUTCMonth(), this.dateObj.getDate());
 
-    // this.ruta = new Ruta();
     this.ruta = {
       _id: '',
       nombre: '',
@@ -72,37 +78,7 @@ export class CrearRutaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getByRol('conductor').pipe(first()).subscribe(
-      users => {
-        this.users = users;
-        for (const a of this.users) {
-          this.options.push(a.displayName.toString());
-        }
-      },
-      err => {
-          console.log(err);
-      }
-    );
-
-    /*
-    ID Ruta A: 5bd267b61115633c9643faca
-    ID Ruta B: 5bd768a60fa1e3579810a280
-    ID RUTA X: 5bdfc4ee49a3d450210a2e10
-
-
-    this.rutaService.getById('5b3255e95e521a02b4b3ddc1').pipe(first()).subscribe(
-      ruta => {
-        console.log(ruta);
-        this.ruta = ruta;
-        console.log('holii ' + this.ruta.estado);
-      },
-      err => {
-          console.log(err);
-      }
-    );
-    */
-
-
+    this.getConductores();
     this.infoForm = this.formBuilder.group({
       nombre: ['', [Validators.required, Validators.minLength(5)]],
       descripcion: ['', [Validators.required, Validators.min(10)]],
@@ -123,6 +99,75 @@ export class CrearRutaComponent implements OnInit {
       );
 
     this.buildMap();
+
+    this.rutaId = this.route.snapshot.params['id'];
+    if (this.rutaId) {
+      this.updateRuta = true;
+      this.rutaService.getById(this.rutaId).pipe(first()).subscribe(
+        ruta => {
+          const fecha_hora = new Date(ruta.fecha_hora.fecha_captura.toString());
+          const fecha = new Date(fecha_hora.getFullYear(), fecha_hora.getMonth(), fecha_hora.getDate());
+          const hora = ( (fecha_hora.getHours() < 10 ? '0' : '') + fecha_hora.getHours())
+          + ':' + ((fecha_hora.getMinutes() < 10 ? '0' : '') + fecha_hora.getMinutes());
+
+          const referencias = ruta.referencias;
+          let coordenadas = '';
+          const obj = [];
+          let temp;
+          referencias.forEach((element) => {
+            coordenadas = coordenadas + element.lng + ',' + element.lat + ';';
+            temp = {
+              name: element.nombre,
+              coordinates: [ element.lng, element.lat]
+            };
+
+            obj.push(temp);
+          });
+          coordenadas = coordenadas.substring(0, coordenadas.length - 1);
+
+          this.infoForm.patchValue({
+            nombre: ruta.nombre,
+            descripcion: ruta.descripcion,
+            fecha: fecha,
+            hora: hora,
+            clima: ruta.clima,
+            intervalo: ruta.int_captura
+          });
+
+          this.oldUserId = ruta.conductor_id.toString();
+
+          referencias.forEach((element) => {
+            this.coords.push([element.lng, element.lat]);
+          });
+
+          this.getMatch(coordenadas);
+          this.finalData = obj;
+          this.ruta.subpuntos = ruta.subpuntos;
+          this.ruta.velocidad_promedio = ruta.velocidad_promedio;
+          this.ruta.estado = ruta.estado;
+          this.ruta.fecha_hora.inicio_captura = ruta.fecha_hora.inicio_captura;
+          this.ruta.fecha_hora.fin_captura = ruta.fecha_hora.fin_captura;
+          console.log('Update ruta' + this.ruta.int_captura);
+        },
+        err => {
+            console.log(err);
+        }
+      );
+    }
+  }
+
+  getConductores () {
+    this.userService.getByRol('conductor').pipe(first()).subscribe(
+      users => {
+        this.users = users;
+        for (const a of this.users) {
+          this.options.push(a.displayName.toString());
+        }
+      },
+      err => {
+          console.log(err);
+      }
+    );
   }
   // convenience getter for easy access to form fields
   get f() { return this.infoForm.controls; }
@@ -134,7 +179,8 @@ export class CrearRutaComponent implements OnInit {
   }
 
   goParent() {
-    this.router.navigate(['../../editor'], {relativeTo: this.route});
+    // this.router.navigate(['../../editor'], {relativeTo: this.route});
+    this.router.navigate(['home/editor']);
   }
 
   openTab(evt, tabName) {
@@ -172,30 +218,21 @@ export class CrearRutaComponent implements OnInit {
     }));
     this.mapa.addControl(new mapboxgl.NavigationControl());
 
-    this.mapa.on('load', () => {
-      // ALL YOUR APPLICATION CODE
-    });
-
     this.mapa.on('draw.create', () => {
-      // console.log('create');
       this.updateRoute();
 
     });
     this.mapa.on('draw.update', () => {
-      // console.log('update');
       this.updateRoute();
     });
     this.mapa.on('draw.delete', () => {
-      // console.log('remove');
       this.removeRoute();
       this.coords = [];
       this.finalData = [];
       if (this.lastItemID === 'manual') {
-        // console.log('remove Manual');
         this.updateRoute();
       }
       if (this.isEmpty(this.coords) || this.coords.length <= 1) {
-        // console.log('vacio');
         this.disabledBtn = true;
       }
     });
@@ -457,53 +494,42 @@ export class CrearRutaComponent implements OnInit {
 
       this.openDialog();
 
-      // -79.19576045180118,-3.9862040301437105 => LONG-LAT
-
     }
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogGuardarRutaComponent, {
       width: '350px',
-      data: {ruta: this.ruta},
+      data: {
+        ruta: this.ruta,
+        update: this.updateRuta,
+        id: this.rutaId,
+        newUserId: this.ruta.conductor_id,
+        oldUserId: this.oldUserId
+      },
       disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      document.getElementById('defaultOpen').click();
-      this.infoForm = this.formBuilder.group({
-        nombre: ['', [Validators.required, Validators.minLength(5)]],
-        descripcion: ['', [Validators.required, Validators.min(10)]],
-        fecha: [{value: new Date(), disabled: true}, [Validators.required]],
-        hora: ['08:00', [Validators.required]],
-        clima: ['', [Validators.required, Validators.minLength(5)]],
-        intervalo: [1, [Validators.required, Validators.min(1), Validators.max(10)]],
-        conductor: ['', [Validators.required, Validators.minLength(5)]]
-      });
-      this.finalData = [];
-      this.coords = [];
-      this.removeRoute();
+      if (result) {
+        this.router.navigate(['home/editor']);
+      }
     });
   }
 
-  public openNotificacion() {
-    this.notification.snackbarSucces('Hola');
-  }
 
   private setRuta() {
     const fecha = this.infoForm.get('fecha').value.toLocaleDateString().split('/');
       const hora = this.infoForm.value.hora.split(':');
-      const c_inicial = this.coords[0];
-      const c_final = this.coords[this.coords.length - 1];
       const coordenadas = [];
-      for (const c of this.coords) {
-        coordenadas.push([c[1], c[0]]);
+      for (const c of this.finalData) {
+        coordenadas.push([c.coordinates[1], c.coordinates[0]]);
       }
       const conduc = this.f.conductor.value.split(' | ');
       let conduc_id: String = '';
       this.users.forEach((item, index) => {
-        if (item.displayName === conduc[0] && conduc[1].toString() === index.toString()) {
+        if (item.displayName === conduc[0]) {
           conduc_id = item._id;
         }
       });
@@ -514,12 +540,9 @@ export class CrearRutaComponent implements OnInit {
       this.ruta.fecha_hora.creacion = new Date();
       this.ruta.fecha_hora.fecha_captura = new Date(fecha[2], fecha[1] - 1, fecha[0], hora[0], hora[1]);
       this.ruta.clima = this.f.clima.value;
-      // this.ruta.configuracion.int_captura = this.f.intervalo.value;
-      /*this.ruta.coordenadas.coor_inicial.lat_inicial = c_inicial[1];
-      this.ruta.coordenadas.coor_inicial.long_inicial = c_inicial[0];
-      this.ruta.coordenadas.coor_final.lat_final = c_final[1];
-      this.ruta.coordenadas.coor_final.long_final = c_final[0];*/
+      this.ruta.int_captura = this.f.intervalo.value;
 
+      this.ruta.referencias = [];
       let temp;
       coordenadas.forEach((item, index) => {
         temp = {
@@ -527,11 +550,8 @@ export class CrearRutaComponent implements OnInit {
           lat: item[0],
           lng: item[1]
         };
-        // console.log(temp);
         this.ruta.referencias.push(temp);
       });
-
-      console.log(this.ruta);
   }
 
   isEmpty(obj: any): boolean {
@@ -552,7 +572,7 @@ export class CrearRutaComponent implements OnInit {
   templateUrl: 'dialog-guardar-ruta.html',
   styleUrls: ['./dialog-guardar-ruta.component.css']
 })
-export class DialogGuardarRutaComponent {
+export class DialogGuardarRutaComponent implements OnInit {
 
   isVisible = false;
   isCorrect = false;
@@ -560,34 +580,45 @@ export class DialogGuardarRutaComponent {
   isDisabled = false;
   isHidden = true;
   message: String = '';
+  action = 'Guardar';
+  userId: string;
 
   constructor(
     public dialogRef: MatDialogRef<DialogGuardarRutaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private rutaService: RutaService) {}
+    private rutaService: RutaService,
+    private userService: UserService) {
+    }
 
-  close(): void {
-    this.dialogRef.close();
+  close(satisfactorio: boolean): void {
+    this.dialogRef.close(satisfactorio);
+  }
+
+  ngOnInit(): void {
+    if (this.data.update) {
+      this.action = 'Actualizar';
+    }
   }
 
   submit() {
-    console.log(this.data.ruta);
     delete this.data.ruta._id;
     delete this.data.ruta.estado;
-    console.log(this.data.ruta);
     this.resetControl();
     this.isDisabled = true;
     this.isVisible = true;
     this.rutaService.crearRuta(this.data.ruta).pipe(first()).subscribe(
       res => {
-        console.log(res);
-        setTimeout(() => {
+        try {
+          this.updatePendingRoutes(this.data.newUserId, res._id);
           this.isVisible = false;
           this.isCorrect = true;
           this.isDisabled = false;
           this.message = res._id;
           this.isHidden = false;
-        }, 5000);
+        } catch (e) {
+          console.log(e);
+        }
+        this.message = res._id;
       },
       err => {
         this.isVisible = false;
@@ -597,6 +628,66 @@ export class DialogGuardarRutaComponent {
         console.log(err);
       }
     );
+  }
+
+  update() {
+    delete this.data.ruta._id;
+    this.resetControl();
+    this.isDisabled = true;
+    this.isVisible = true;
+    this.rutaService.actualizar(this.data.id, this.data.ruta).pipe(first()).subscribe(
+      res => {
+        this.changeDriver(this.data.oldUserId, this.data.newUserId, this.data.id);
+        this.isVisible = false;
+        this.isCorrect = true;
+        this.isDisabled = false;
+        this.message = res._id;
+        this.isHidden = false;
+      },
+      err => {
+        this.isVisible = false;
+        this.isIncorrect = true;
+        this.message = err.message;
+        this.isDisabled = false;
+        console.log(err);
+      }
+    );
+  }
+
+  async updatePendingRoutes (userId: string, rutaId: string) {
+    let response: any;
+    const array = [];
+    array.push(rutaId);
+    const obj = {
+      'elemento' : array
+    };
+    try {
+      response = await this.userService.updateRutasPendientes(userId, obj).pipe(first()).toPromise();
+    } catch (e) {
+      throw {
+        message: e.message,
+        status: e.status,
+        statusText: e.statusText,
+        error: new Error()
+      };
+    }
+  }
+
+  async changeDriver(oldUserId: string, newUserId: string, rutaId: string) {
+    try {
+      const obj = {
+        'id': rutaId
+      };
+      await this.userService.delRutaPendiente(oldUserId, obj).pipe(first()).toPromise();
+      await this.updatePendingRoutes(newUserId, rutaId);
+    } catch (e) {
+      throw {
+        message: e.message,
+        status: e.status,
+        statusText: e.statusText,
+        error: new Error()
+      };
+    }
   }
 
   private resetControl() {

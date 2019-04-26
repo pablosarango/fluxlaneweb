@@ -1,0 +1,259 @@
+.detalles-container {
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #fff;
+}
+
+.tab-icon {
+    margin-right: 8px;
+}
+
+.resumen {
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    font-family: 'Ubuntu', sans-serif;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.descripcion {
+    height: 70px;
+}
+
+.desc {
+    padding-left: 10px;
+    width: calc(100% - 10px);
+    height: 45px;
+    line-height: 15px;
+    font-size: 15px;
+    overflow: auto;
+}
+
+.resumen-icon {
+    float: left;
+    width: 50px;
+    height: calc(100% - 1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resumen-content {
+    float: left;
+    width: calc(100% - 50px);
+    height: calc(100% - 1px);
+}
+
+.resumen-content p {
+    margin: 0;
+}
+
+.resumen-label {
+    height: 20px;
+    line-height: 20px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.resumen-desc {
+    padding-left: 10px;
+    width: calc(100% - 10px);
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    overflow: auto;
+}
+
+.tab {
+    width: 100%;
+    height: 100%;
+}
+
+.info-dialogo {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.mapa-container {
+    width: 100%;
+    height: calc(100vh - 203px);
+}
+
+.mapa {
+    width: 100%;
+    height: 600px;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 51px;
+    background-color: rgba(219, 219, 219, 0.1);
+    border-top: 1px solid #ccc;
+}
+
+.cerrar {
+    position: absolute;
+    right: 30px;
+    top: 12px;
+    color: #3F51B5;
+}
+
+.point {
+    width: 100%;
+    height: 45px;
+    background-color: #fff;
+    border-bottom: 1px solid #000;
+}
+
+.point-speed {
+    width: calc(100% - 5px);
+    height: 25px;
+    line-height: 25px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    color: #000;
+    padding-left: 5px;
+    outline: none;
+}
+
+.point-coordinates {
+    width: calc(100% - 5px);
+    height: 20px;
+    line-height: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
+    padding-left: 5px;
+}
+
+.izq {
+    float: left;
+    width: 50%;
+    height: calc(100vh - 204px);
+    overflow: auto;
+}
+
+.der {
+    position: relative;
+    float: left;
+    width: calc(50% - 1px);
+    height: calc(100vh - 204px);
+    border-left: 1px solid #E0E0E0;
+}
+
+.subpoints-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #FAFAFA;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.opciones-estados {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 222px);
+}
+
+.nombre-ruta {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.opciones {
+    width: 500px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.estado-desc {
+    width: 100%;
+    height: 100%;
+}
+
+.descripcion-opciones{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.aprobada {
+    height: 50px;
+    color: #3F51B5;
+}
+
+.revisada {
+    height: 50px;
+    color: #E91E63;
+}
+
+.rechazada {
+    height: 50px;
+    color: #F44336;
+}
+
+.footer-opciones {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+}
+
+.boton-guardar {
+    margin-left: 20px;
+}
+
+.leyenda {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 150px;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.item{
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+.dot {
+    position: absolute;
+    top: 12.5px;
+    left: 10px;
+    width: 15px;
+    height: 15px;
+}
+
+.item-separador {
+    position: absolute;
+    top: 12.5px;
+    left: 25px;
+    width: 20px;
+}
+
+.dot-text {
+    position: absolute;
+    top: 12.5px;
+    left: 40px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 14px;
+}

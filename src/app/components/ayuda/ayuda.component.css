@@ -1,0 +1,149 @@
+.container-ayuda {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 95%;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fff;
+}
+
+.ayuda-header {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: rgba(219, 219, 219, 0.1);
+}
+
+.ayuda-body {
+    width: 100%;
+    height: calc(100% - 64px);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.ayuda-text1 {
+    position: absolute;
+    z-index: 1;
+    width: 300px;
+    color: rgba(124, 122, 122, 0.6);
+    text-align: justify;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+}
+
+.ayuda-text1 a {
+    color: rgba(124, 122, 122, 0.6);
+    text-decoration: none;
+}
+
+.contenido {
+    position: relative;
+    width: 100%;
+    height: 95%;
+    background-color: #fff;
+}
+
+.toolbar-ayuda {
+    width: 100%;
+    min-height: 64px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: #000;
+}
+
+.fila {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell {
+    position: relative;
+    width: 135px;
+    height: 135px;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fff;
+}
+
+.separador {
+    width: 50px;
+}
+
+.label {
+    position: absolute;
+    width: 100%;
+    bottom: 15px;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #3F51B5;
+}
+
+.descripcion {
+    position: absolute;
+    z-index: 2;
+    top: 70px;
+    left: 50px;
+    color: #000;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+
+.fila-color {
+    background-color: #eee;
+}
+
+.autor {
+    position: absolute;
+    text-align: center;
+    width: 30%;
+    left: 35%;
+    bottom: 50px;
+    color: #000;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+}
+
+.contact-icon {
+    position: absolute;
+    width: 40%;
+    left: 30%;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-icon a {
+    text-decoration: none;
+    color: #ccc;
+}
+
+.contact-icon a:hover {
+    color: #3F51B5;
+}
+
+.separador-icon {
+    width: 20px;
+}

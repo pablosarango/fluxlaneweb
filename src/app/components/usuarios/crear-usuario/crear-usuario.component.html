@@ -1,0 +1,85 @@
+<div class="container-crear-usuario">
+  <form [formGroup]="formNewUser" class="form-crear-usuario" (ngSubmit)="onFormSubmit()" enctype="multipart/form-data">
+    <div class="form-izq">
+      <p class="info-usuario">
+        <mat-form-field appearance="outline" class="usuario-input">
+          <mat-label>Nombre completo</mat-label>
+          <input formControlName="nombre" type="text" matInput placeholder="Nombre de usuario" required>
+          <mat-error *ngIf="formNewUser.get('nombre').invalid">
+            {{getErrorNameMessage()}}
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p class="info-usuario">
+        <mat-form-field appearance="outline" class="usuario-input">
+          <mat-label>Correo</mat-label>
+          <input formControlName="correo" type="email" matInput placeholder="Correo del usuario" required>
+          <mat-error *ngIf="formNewUser.get('correo').invalid">
+            {{getErrorEmailMessage()}}
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p class="info-usuario">
+        <mat-form-field appearance="outline" class="usuario-input">
+          <mat-label>Contraseña</mat-label>
+          <input formControlName="password" [type]="hide ? 'password' : 'text'" matInput placeholder="Contraseña" required>
+          <mat-error *ngIf="formNewUser.get('password').invalid">
+            {{getErrorPasswordMessage()}}
+          </mat-error>
+          <mat-icon color="primary" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+      </p>
+      <p class="info-usuario">
+        <mat-form-field appearance="outline" class="usuario-input">
+          <mat-label>Repita la contraseña</mat-label>
+          <input formControlName="confirmPassword" [type]="hide ? 'password' : 'text'" matInput placeholder="Repetir contraseña" required>
+          <mat-error *ngIf="formNewUser.get('confirmPassword').invalid">
+            {{getErrorConfirmPasswordMessages()}}
+          </mat-error>
+          <mat-icon color="primary" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+      </p>
+    </div>
+    <div class="form-der">
+      <div class="upload">
+        <mat-label class="center-1" style="height: 40px;">Avatar</mat-label>
+        <div class="circle">
+          <img class="avatar-img" src="{{urlAvatar}}">
+        </div>
+        <br>
+        <input class="input-upload" (change)="fileChange($event)" formControlName='avatar' type="file" accept=".jpg,.jpeg,.png" required>
+        <!--
+        <mat-error *ngIf="formNewUser.get('avatar').invalid">
+          {{getErrorAvatarMessages()}}
+        </mat-error>
+        -->
+      </div>
+      <p class="info-usuario">
+        <mat-form-field class="usuario-input">
+          <mat-select placeholder="Rol" formControlName='rol' name="rol">
+            <mat-option *ngFor="let rol of rols" [value]="rol.value">
+              {{rol.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="formNewUser.get('rol').invalid">
+            {{getErrorRolMessages()}}
+          </mat-error>
+        </mat-form-field>
+      </p>
+      <p class="info-usuario">
+        <mat-form-field appearance="outline" class="usuario-input">
+          <mat-label>Tipo de vehículo</mat-label>
+          <input formControlName="vehiculo" type="text" matInput placeholder="Vehículo" required>
+          <mat-error *ngIf="formNewUser.get('vehiculo').invalid">
+            {{getErrorVehicleMessages()}}
+          </mat-error>
+        </mat-form-field>
+      </p>
+    </div>
+    <div class="btn-save-user center-1">
+      <button type="submit" [disabled]="invalidForm" mat-raised-button color="primary">Guardar</button>
+      <button style="margin-left: 10px" (click)="cerrar()" mat-raised-button >Cancelar</button>
+    </div>
+  </form>
+</div>
+

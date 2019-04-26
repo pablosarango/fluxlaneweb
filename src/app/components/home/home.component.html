@@ -1,39 +1,78 @@
 <div class="container">
     <div class="menu">
         <div class="usuario">
-            <div class="foto">
-                <img src="../../../assets/img/recursos/foto.jpg">
-            </div>
-            <div class="nombre">
-                Pablo Sarango
-            </div>
+        <div class="foto">
+            <img src="{{ userAvatar }}" />
+        </div>
+        <div class="nombre">
+            {{ userName }}
+        </div>
         </div>
         <div class="items">
-            <div id="rutas" class="item-group" (click)="selected('rutas')" [routerLink]="['rutas']">
-                    <i class="fas fa-route icon"></i>
-                <a class="item">Rutas</a>
-            </div>
-            <div id="editor" class="item-group" (click)="selected('editor')" [routerLink]="['editor']">
-                <i class="fas fa-draw-polygon icon"></i>
-                <a class="item">Editor</a>
-            </div>
-            <div id="usuarios" class="item-group" (click)="selected('usuarios')" [routerLink]="['usuarios']">
-                <i class="fas fa-users icon"></i>
-                <a class="item">Usuarios</a>
-            </div>
+        <div
+            id="rutas"
+            class="item-group"
+            (click)="selected('rutas')"
+            [routerLink]="['rutas/dashboard']"
+            matTooltip="Gestiona las rutas con datos capturados"
+            matTooltipPosition="above"
+            matTooltipShowDelay="1000"
+        >
+            <i class="fas fa-route icon"></i>
+            <a class="item">Rutas</a>
+        </div>
+        <div
+            id="editor"
+            class="item-group"
+            (click)="selected('editor')"
+            [routerLink]="['editor/inicio']"
+            matTooltip="Crea, edita, elimina rutas"
+            matTooltipPosition="above"
+            matTooltipShowDelay="1000"
+        >
+            <i class="fas fa-draw-polygon icon"></i>
+            <a class="item">Editor</a>
+        </div>
+        <div
+            id="usuarios"
+            class="item-group"
+            (click)="selected('usuarios')"
+            [routerLink]="['usuarios/dashboard']"
+            matTooltip="Crea, edita, elimina usuarios"
+            matTooltipPosition="above"
+            matTooltipShowDelay="1000"
+        >
+            <i class="fas fa-users icon"></i>
+            <a class="item">Usuarios</a>
+        </div>
+        <div
+            id="ayuda"
+            class="item-group"
+            (click)="selected('ayuda')"
+            [routerLink]="['ayuda']"
+            matTooltip="Guía rápida del sistema web"
+            matTooltipPosition="above"
+            matTooltipShowDelay="1000"
+        >
+            <i class="far fa-life-ring icon"></i>
+            <a class="item">Ayuda</a>
+        </div>
+        </div>
+        <div class="logout-container">
+        <div class="logout">
+            <i
+            class="fas fa-power-off fa-lg logout-icon"
+            [routerLink]="['/login']"
+            matTooltip="Cierra sesión"
+            matTooltipPosition="above"
+            matTooltipShowDelay="500"
+            ></i>
+        </div>
         </div>
     </div>
     <div class="component">
         <div class="loader">
-            <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
         </div>
-        <!--<div class="example">
-            
-        </div>
-        -->
     </div>
 </div>
-
-<!--
-<p><a [routerLink]="['/login']">Logout</a></p>
--->

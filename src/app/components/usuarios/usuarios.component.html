@@ -1,3 +1,28 @@
 <div class="container-usuarios">
-  Usuarios!!!
+  <div class="usuarios-header">
+    <mat-toolbar class="toolbar-usuarios">
+        <mat-toolbar-row class="row-header">
+          <span>Usuarios</span>
+          <span class="example-spacer"></span>
+          <i class="fas fa-table example-icon fa-lg" [routerLink]="['dashboard']"
+            matTooltip="Muestra los usuarios registrados"
+            matTooltipPosition="below"
+            matTooltipShowDelay="1000"
+          ></i>
+          <i class="fas fa-plus-circle example-icon fa-lg" [routerLink]="['crear']"
+            matTooltip="Crea un nuevo usuario"
+            matTooltipPosition="below"
+            matTooltipShowDelay="1000"
+          ></i>
+        </mat-toolbar-row>
+      </mat-toolbar>
+  </div>
+  <div class="usuarios-body">
+    <div class="usuarios-text1">
+      Para comenzar selecciona una acción. Si necesitas más información visita www.fluxlane.com
+    </div>
+    <div class="usuarios-router-outlet">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

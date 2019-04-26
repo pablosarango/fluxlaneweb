@@ -1,0 +1,208 @@
+<div class="detalles-container">
+    <mat-tab-group style="font-family: 'Ubuntu', sans-serif;" *ngIf="!isWaiting" class="tab" (selectedTabChange)="changeTab($event)">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">info</mat-icon>
+                Info
+            </ng-template>
+            <div class="info-dialogo">
+
+                <div class="resumen">
+                    <i class="fas fa-id-card-alt fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Id:</p>
+                        <p class="resumen-desc">{{ruta._id}}</p>
+                    </div>
+                </div>
+
+                <div class="resumen descripcion">
+                    <i class="fas fa-align-justify fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Descripción:</p>
+                        <p class="desc">{{ruta.descripcion}}</p>
+                    </div>
+                </div>
+
+                <div class="resumen">
+                    <i class="fas fa-check-square fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Estado:</p>
+                        <p class="resumen-desc">{{ruta.estado}}</p>
+                    </div>
+                </div>
+
+                <div class="resumen">
+                    <i class="fas fa-calendar-alt fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Fecha:</p>
+                        <p class="resumen-desc">{{fecha}}</p>
+                    </div>
+                </div>
+
+                <div class="resumen">
+                    <i class="fas fa-clock fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Hora:</p>
+                        <p class="resumen-desc">{{hora}}</p>
+                    </div>
+                </div>
+
+                <div class="resumen">
+                    <i class="fas fa-sun fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Clima:</p>
+                        <p class="resumen-desc">{{ruta.clima}}</p>
+                    </div>
+                </div>
+
+                <div class="resumen">
+                    <i class="fas fa-info fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Intervalo (Segundos):</p>
+                        <p class="resumen-desc">{{ruta.int_captura}}</p>
+                    </div>
+                </div>
+
+                <div class="resumen">
+                    <i class="fas fa-user-alt fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Conductor:</p>
+                        <p class="resumen-desc">{{conductor.displayName}}</p>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">map</mat-icon>
+                Ruta
+            </ng-template>
+            <div class='mapa-container'>
+                <div id='mapa' style='position:absolute !important; top:0; bottom:0; width:100%;'></div>
+                <div class="leyenda">
+                    <div class="item">
+                        <div class="dot" style="background-color: #3F51B5"></div>
+                        <div class="item-separador"></div>
+                        <div class="dot-text">Ruta trazada</div>
+                    </div>
+                    <div class="item">
+                        <div class="dot" style="background-color: #E91E63"></div>
+                        <div class="item-separador"></div>
+                        <div class="dot-text">Ruta recorrida</div>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">place</mat-icon>
+                Subpuntos
+            </ng-template>
+            <div class="izq">
+                    <div *ngFor="let subpunto of subpuntos; let i = index" class="point">
+                    <div class="point-speed">Velocidad: {{subpunto.velocidad}} Km/h</div>
+                    <div class="point-coordinates">Lat: {{subpunto.coordenadas.latitud}} | Lng: {{subpunto.coordenadas.longitud}}</div>
+                </div>
+            </div>
+            <div class="der">
+                <div class="resumen">
+                    <i class="fas fa-tachometer-alt fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Velocidad promedio:</p>
+                        <p class="resumen-desc">{{velocidadPromedio}} Km/h</p>
+                    </div>
+                </div>
+                <div class="resumen">
+                    <i class="fas fa-map-marker fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Subpuntos:</p>
+                        <p class="resumen-desc">{{subpuntos.length}}</p>
+                    </div>
+                </div>
+                <div class="resumen">
+                    <i class="fas fa-calendar-alt fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Fecha/Hora de inicio de captura:</p>
+                        <p class="resumen-desc">{{fechaInicioCaptura}} - {{horaInicioCaptura}}</p>
+                    </div>
+                </div>
+                <div class="resumen">
+                    <i class="fas fa-calendar-alt fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Fehca/Hora de finalización de captura:</p>
+                        <p class="resumen-desc">{{fechaFinCaptura}} - {{horaFinCaptura}}</p>
+                    </div>
+                </div>
+                <div class="resumen">
+                    <i class="fas fa-clock fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Duración de viaje (aproximado):</p>
+                        <p class="resumen-desc">{{duracionViaje}}</p>
+                    </div>
+                </div>
+                <div class="resumen">
+                    <i class="fas fa-arrow-up fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Velocidad máxima:</p>
+                        <p class="resumen-desc">{{maxSpeed}}</p>
+                    </div>
+                </div>
+                <div class="resumen">
+                    <i class="fas fa-arrow-down fa-lg resumen-icon"></i>
+                    <div class="resumen-content">
+                        <p class="resumen-label">Velocidad mínima (sin contar 0):</p>
+                        <p class="resumen-desc">{{minSpeed}}</p>
+                    </div>
+                </div>
+                <div class="subpoints-footer">
+                    <button mat-stroked-button color="primary" (click)="eliminarCeros()" >Eliminar ceros</button>
+                </div>
+            </div>
+
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">dashboard</mat-icon>
+                Opciones
+            </ng-template>
+            <div class="opciones-estados">
+                <div class="nombre-ruta">
+                    A continuación puede determinar el estado de <i>{{ruta.nombre}}</i>.
+                </div>
+                <div class="opciones">
+                    <div class="estado-desc">
+                        <div class="descripcion-opciones">
+                            <b style="color: #3F51B5;">Aprobada: </b> los datos recolectados son válidos para su publicación. La ruta es pública.
+                        </div>
+                        <mat-slide-toggle class="aprobada" (change)="changeState('aprobada', $event.checked)" [checked]="toggleAprobar" color="primary">Aprobar</mat-slide-toggle>
+                    </div>
+                    <div class="estado-desc">
+                        <div class="descripcion-opciones">
+                            <b style="color: #E91E63;">Revisada: </b> los datos recolectados se han revisado, pero no se han aprobado. La ruta no es
+                            pública.
+                        </div>
+                        <mat-slide-toggle class="revisada" (change)="changeState('revisada', $event.checked)" [checked]="toggleRevisar" color="accent">Revisar</mat-slide-toggle>
+                    </div>
+                    <div class="estado-desc">
+                        <div class="descripcion-opciones">
+                            <b style="color: #F44336;">Rechazada: </b> los datos recolectados <b>NO</b> son válidos para su publicación. La ruta
+                            <b>NO</b> es pública.
+                        </div>
+                        <mat-slide-toggle class="rechazada" (change)="changeState('rechazada', $event.checked)" [checked]="toggleRechazar" color="warn">Rechazar</mat-slide-toggle>
+                    </div>
+                </div>
+                <div class="footer-opciones">
+                    <button [disabled]="isChange" class="boton-guardar" (click)="guardar()" mat-raised-button color="primary">Guardar</button>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+    <mat-card *ngIf="isWaiting" style="position: absolute; top: 0; left: 0; right: 0; bottom: 51px; display: flex; justify-content: center; align-items: center">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+    </mat-card>
+    <div class="footer">
+        <i class="fas fa-times-circle cerrar fa-2x" (click)="goParent()"></i>
+    </div>
+</div>

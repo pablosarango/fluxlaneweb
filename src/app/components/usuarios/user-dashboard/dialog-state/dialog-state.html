@@ -1,0 +1,34 @@
+<h2 mat-dialog-title style="font-family: 'Ubuntu', sans-serif;">Actualizar estado de {{user.displayName}}</h2>
+<mat-dialog-content class="dialog">
+    <form [formGroup]="formState" *ngIf="formHide">
+        <div class="body-form">
+            <p class="info-state">
+                <mat-form-field class="state-input">
+                    <mat-select placeholder="Estado"  formControlName='estado' name="food" required>
+                        <mat-option *ngFor="let estado of estados" [value]="estado.value">
+                        {{estado.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+        </div>
+    </form>
+    Para confirmar haz click en <i><strong>ACTUALIZAR</strong></i>
+    <mat-spinner *ngIf="isVisible" class="dialog-spinner"></mat-spinner>
+    <div class="mensaje">
+        <div *ngIf="isCorrect" class="success">
+            <p class="mensaje-label">Correcto:</p>
+            {{message}}
+        </div>
+        <div *ngIf="isIncorrect" class="error">
+            <p class="mensaje-label">Error: </p>
+            {{message}}
+        </div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button style="font-family: 'Ubuntu', sans-serif;" (click)="close(false)" [disabled]="isDisabled" *ngIf="isHidden" cdkFocusInitial>Cancelar</button>
+    <button mat-button style="font-family: 'Ubuntu', sans-serif;" (click)="update()" [disabled]="isDisabled" *ngIf="isHidden">Actualizar</button>
+    <button mat-button style="font-family: 'Ubuntu', sans-serif;" (click)="close(true)" color="primary" *ngIf="!isHidden">Cerrar</button>
+</mat-dialog-actions>

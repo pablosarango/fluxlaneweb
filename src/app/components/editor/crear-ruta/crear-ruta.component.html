@@ -46,7 +46,7 @@
           </p>
           <p class="info-p">
             <mat-form-field appearance="outline" class="info-input">
-              <mat-label>Intervalo de captura</mat-label>
+              <mat-label>Intervalo de captura (Segundos)</mat-label>
               <input formControlName="intervalo" type="number" min="1" max="10" matInput placeholder="1 => 1 segundo"
                 required>
               <mat-error *ngIf="infoForm.get('intervalo').invalid">Valores entre 1-10</mat-error>
@@ -74,10 +74,26 @@
   <div id="mapa" class="tabcontent">
     <div class="mapa-container">
       <div id='map' class="mapa" style='position:absolute !important; top:0; bottom:0; width:70%;'></div>
-      <i class="fas fa-expand-arrows-alt fa-2x resize" (click)="resizeMap()"></i>
+      <i class="fas fa-expand-arrows-alt fa-2x resize" (click)="resizeMap()"
+        matTooltip="Redimensionar el mapa"
+        matTooltipPosition="above"
+        matTooltipShowDelay="1000"
+      ></i>
       <div class="controles">
-        <a id="asistido" (click)="selected('asistido')" class="controles-btn asistido">Asistido</a>
-        <a id="manual" (click)="selected('manual')" class="controles-btn manual">Manual</a>
+        <a id="asistido" (click)="selected('asistido')" class="controles-btn asistido"
+          matTooltip="Colocación de puntos en un solo trazo"
+          matTooltipPosition="above"
+          matTooltipShowDelay="1000"
+        >
+          Asistido
+        </a>
+        <a id="manual" (click)="selected('manual')" class="controles-btn manual"
+          matTooltip="Trazado punto por punto"
+          matTooltipPosition="above"
+          matTooltipShowDelay="1000"
+        >
+          Manual
+        </a>
       </div>
       <div class="map-points">
         <div class="map-points-header">

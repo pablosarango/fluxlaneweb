@@ -1,0 +1,58 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.objetos {
+    position: relative;
+    width: 1024px;
+    height: 700px;
+}
+
+.fluxlane {
+    position: relative;
+    top: 465px;
+    left: 112px;
+    background-color: #EEEEEE;
+    width: 800px;
+    height: 150px;
+    border-radius: 7px;
+}
+
+.oops {
+    position: absolute;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+    color: #3F51B5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 15px;
+    color: #424242;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gif {
+    position: absolute;
+    top: 40px;
+    right: 337px;
+    width: 350px;
+    height: 425px;
+}
+
+.icon-404 {
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,74 @@
+<h2 mat-dialog-title style="font-family: 'Ubuntu', sans-serif;">{{ruta.nombre}}</h2>
+<mat-dialog-content>
+    <mat-tab-group (selectedTabChange)="changeTab($event)">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">info</mat-icon>
+            </ng-template>
+            <div class="info-dialogo">
+                <div class="resumen descripcion">
+                <i class="fas fa-align-justify fa-lg resumen-icon"></i>
+                <div class="resumen-content">
+                    <p class="resumen-label">Descripción:</p>
+                    <p class="desc">{{ruta.descripcion}}</p>
+                </div>
+                </div>
+
+                <div class="resumen">
+                <i class="fas fa-calendar-alt fa-lg resumen-icon"></i>
+                <div class="resumen-content">
+                    <p class="resumen-label">Fecha:</p>
+                    <p class="resumen-desc">{{data.fecha}}</p>
+                </div>
+                </div>
+
+                <div class="resumen">
+                <i class="fas fa-clock fa-lg resumen-icon"></i>
+                <div class="resumen-content">
+                    <p class="resumen-label">Hora:</p>
+                    <p class="resumen-desc">{{data.hora}}</p>
+                </div>
+                </div>
+
+                <div class="resumen">
+                <i class="fas fa-sun fa-lg resumen-icon"></i>
+                <div class="resumen-content">
+                    <p class="resumen-label">Clima:</p>
+                    <p class="resumen-desc">{{ruta.clima}}</p>
+                </div>
+                </div>
+
+                <div class="resumen">
+                <i class="fas fa-info fa-lg resumen-icon"></i>
+                <div class="resumen-content">
+                    <p class="resumen-label">Intervalo (Segundos):</p>
+                    <p class="resumen-desc">{{ruta.int_captura}}</p>
+                </div>
+                </div>
+
+                <div class="resumen">
+                <i class="fas fa-user-alt fa-lg resumen-icon"></i>
+                <div class="resumen-content">
+                    <p class="resumen-label">Conductor:</p>
+                    <p class="resumen-desc">{{conductor.displayName}}</p>
+                </div>
+                </div>
+
+            </div>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="tab-icon">mapa</mat-icon>
+                Ruta
+            </ng-template>
+            <div id='mapa-dialogo' class="mapa">
+            </div>
+        </mat-tab>
+</mat-tab-group>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-stroked-button color="primary" (click)="close()">Cerrar</button>
+</mat-dialog-actions>
+

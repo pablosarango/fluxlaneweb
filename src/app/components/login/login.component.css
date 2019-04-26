@@ -12,8 +12,8 @@
     top: 50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
-    width: 70%;
-    height: 80vh;
+    width: 1008px;
+    height: 584.8px;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 15px;
     overflow: hidden;
@@ -23,7 +23,7 @@
     position: relative;
     float: left;
     width: 50%;
-    height: 80vh;
+    height: 584.8px;
     background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),  url("../../../assets/img/recursos/bg5.jpg");
     background-size: cover;
     color: #fff;
@@ -35,7 +35,7 @@
     position: relative;
     float: left;
     width: 50%;
-    height: 80vh;
+    height: 584.8px;
 }
 
 .cloud {
@@ -183,7 +183,7 @@
     position: absolute;
     top: 200px;
     right: 5px;
-    width: 50%;
+    width: 60%;
     height: 2px;
     background-color: rgba(255, 255, 255, 1);
     border:none;

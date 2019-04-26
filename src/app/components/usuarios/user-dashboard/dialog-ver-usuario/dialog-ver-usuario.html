@@ -1,0 +1,83 @@
+<h2 mat-dialog-title style="font-family: 'Ubuntu', sans-serif;">{{user.displayName}}</h2>
+<mat-dialog-content>
+    <div class="info-dialogo">
+        <div class="avatar-container">
+            <div class="avatar-circle">
+                <img class="avatar" src="{{avatarUrl}}">
+            </div>
+        </div>
+
+        <div class="resumen">
+            <i class="fas fa-id-card-alt fa-lg resumen-icon"></i>
+            <div class="resumen-content">
+                <p class="resumen-label">Id:</p>
+                <p class="resumen-desc">{{user._id}}</p>
+            </div>
+        </div>
+
+        <div class="resumen">
+            <i class="fas fa-envelope fa-lg resumen-icon"></i>
+            <div class="resumen-content">
+                <p class="resumen-label">Correo:</p>
+                <p class="resumen-desc">{{user.email}}</p>
+            </div>
+        </div>
+
+        <div class="resumen">
+            <i class="fas fa-briefcase fa-lg resumen-icon"></i>
+            <div class="resumen-content">
+                <p class="resumen-label">Rol:</p>
+                <p class="resumen-desc">{{user.rol}}</p>
+            </div>
+        </div>
+
+        <div class="resumen">
+            <i class="fas fa-traffic-light fa-lg resumen-icon"></i>
+            <div class="resumen-content">
+                <p class="resumen-label">Estado:</p>
+                <p class="resumen-desc">{{user.state}}</p>
+            </div>
+        </div>
+
+        <div class="resumen">
+            <i class="fas fa-car fa-lg resumen-icon"></i>
+            <div class="resumen-content">
+                <p class="resumen-label">Vehículo:</p>
+                <p class="resumen-desc">{{user.vehicle}}</p>
+            </div>
+        </div>
+
+        <div class="resumen">
+            <i class="fas fa-calendar-alt fa-lg resumen-icon"></i>
+            <div class="resumen-content">
+                <p class="resumen-label">Fecha de alta:</p>
+                <p class="resumen-desc">{{fecha_alta}}</p>
+            </div>
+        </div>
+
+        <div class="resumen">
+            <i class="fas fa-sign-in-alt fa-lg resumen-icon"></i>
+            <div class="resumen-content">
+                <p class="resumen-label">Último inicio de sesión:</p>
+                <p class="resumen-desc">{{last_login}}</p>
+            </div>
+        </div>
+
+        <div class="resumen pending-routes">
+            <i class="fas fa-clipboard-list fa-lg resumen-icon"></i>
+            <div class="resumen-content">
+                <p class="resumen-label">Rutas pendientes: {{user.pending_routes.length}}</p>
+                <ul class="resumen-desc pending-routes-desc no-margin">
+                    <li *ngFor="let item of user.pending_routes">
+                        {{item}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-stroked-button color="primary" (click)="close()">Cerrar</button>
+</mat-dialog-actions>

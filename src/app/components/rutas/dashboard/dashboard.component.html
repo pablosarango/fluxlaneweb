@@ -1,0 +1,73 @@
+<div class="rutas-dashboard">
+  <div class="search-header">
+    <form [formGroup]="searchForm">
+      <input formControlName="valor" type="text" placeholder="Criterio de búsqueda" class="search-input"
+        matTooltip="Busca una ruta en la base de datos"
+        matTooltipPosition="above"
+        matTooltipShowDelay="1000"
+        required>
+      <button class="search-button" [disabled]="searchForm.get('valor').invalid" [ngClass]="{'active': !searchForm.get('valor').invalid}"
+        (click)="search(searchForm.get('valor').value)">
+        <i class="fas fa-search fa-lg"></i>
+      </button>
+    </form>
+  </div>
+  <div class="body-rutas">
+    <div class="filter">
+      <mat-form-field class="mat-form-field">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtro"
+          matTooltip="Filtra los resultados de la tabla"
+          matTooltipPosition="above"
+          matTooltipShowDelay="1000"
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="mat-elevation-z8 tabla">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Nombre Column -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let row"> {{row.nombre}} </td>
+        </ng-container>
+
+        <!-- Estado Column -->
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+          <td mat-cell *matCellDef="let row"> {{row.estado}} </td>
+        </ng-container>
+
+        <!-- Fecha Column -->
+        <ng-container matColumnDef="fecha">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+          <td mat-cell *matCellDef="let row"> {{row.fecha}} </td>
+        </ng-container>
+
+        <!-- Opciones Column -->
+        <ng-container matColumnDef="opciones">
+          <th mat-header-cell *matHeaderCellDef> Opciones </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="primary" (click)="goToDetalles(row.id)"
+              matTooltip="Accede a opciones de ruta"
+              matTooltipPosition="above"
+              matTooltipShowDelay="1000"
+            >
+              <i class="fas fa-cogs"></i>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+
+      <mat-paginator class="paginator" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+        <mat-progress-spinner color="primary" mode="indeterminate">
+        </mat-progress-spinner>
+      </mat-card>
+    </div>
+  </div>
+</div>

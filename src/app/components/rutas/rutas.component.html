@@ -1,3 +1,23 @@
-<div class="container-routes">
-  RUTAS!!!
+<div class="container-rutas">
+  <div class="rutas-header">
+    <mat-toolbar class="toolbar-rutas">
+      <mat-toolbar-row class="row-header">
+        <span>Rutas</span>
+        <span class="example-spacer"></span>
+        <i class="fas fa-table example-icon fa-lg" [routerLink]="['dashboard']"
+        matTooltip="Accede a todas las rutas con datos capturados"
+        matTooltipPosition="below"
+        matTooltipShowDelay="1000"
+        ></i>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+  <div class="rutas-body">
+    <div class="rutas-text1">
+      Para comenzar selecciona una acción. Si necesitas más información visita www.fluxlane.com
+    </div>
+    <div class="rutas-router-outlet">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

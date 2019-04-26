@@ -8,5 +8,63 @@
     border-radius: 20px;
     background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: lightcoral;
+    background-color: #fff;
+}
+
+.usuarios-header {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: rgba(219, 219, 219, 0.1);
+}
+
+.usuarios-body {
+    width: 100%;
+    height: calc(100% - 64px);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usuarios-text1 {
+    position: absolute;
+    z-index: 1;
+    width: 300px;
+    color: rgba(124, 122, 122, 0.6);
+    text-align: justify;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+}
+
+.usuarios-text1 a {
+    color: rgba(124, 122, 122, 0.6);
+    text-decoration: none;
+}
+
+.usuarios-router-outlet {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: calc(100% - 64px);
+}
+
+.toolbar-usuarios {
+    width: 100%;
+    min-height: 64px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: #000;
+}
+
+.example-icon {
+    padding: 0 14px;
+    color: #3F51B5;
+    outline: none;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
 }

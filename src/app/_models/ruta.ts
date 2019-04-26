@@ -1,35 +1,3 @@
-/*export class Ruta {
-    _id: String;
-    nombre: String;
-    descripcion: String;
-    estado: String;
-    conductor_id: String;
-    velocidad_promedio: String;
-    fecha_hora: {
-        creacion: Date,
-        fecha_captura: Date,
-        inicio_captura: String,
-        fin_captura: String
-    };
-    clima: String;
-    configuracion: {
-        int_captura: Number
-    };
-    referencias = [
-        {
-            nombre: String,
-            lat: String,
-            lng: String
-        }
-    ];
-    subpuntos = [
-        {
-            id: String,
-        }
-    ];
-
-    constructor() {}
-}*/
 interface FechaHora {
     creacion: Date;
     fecha_captura: Date;
