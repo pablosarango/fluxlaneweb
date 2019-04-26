@@ -79,6 +79,11 @@
     background-color: #fff;
 }
 
+.fila a {
+    color: #000;
+    text-decoration: none;
+}
+
 .separador {
     width: 50px;
 }
